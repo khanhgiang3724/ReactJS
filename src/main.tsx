@@ -4,11 +4,17 @@ import App from './App.tsx'
 import './App.css'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
+import ProductContex from './contexs/ProductContex.tsx'
+import CategoryContex from './contexs/CategoryContex.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ProductContex>
+        <CategoryContex>
+        <App />
+        </CategoryContex>
+      </ProductContex>
     </BrowserRouter>
   </React.StrictMode>,
 )

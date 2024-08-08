@@ -1,10 +1,12 @@
-import React from 'react'
+
 import ItemProduct from './product/ItemProduct'
+import Blog from './product/Blog'
 
 const Home = () => {
   return (
     <div>
         <ItemProduct/>
+        <Blog/>
     </div>
   )
 }
