@@ -11,12 +11,16 @@ import ListCategory from './pages/Admin/categoryAdmin/ListCategory';
 import AddCategory from './pages/Admin/categoryAdmin/AddCategory';
 import EditCategory from './pages/Admin/categoryAdmin/EditCategory';
 import Shop from './pages/Website/Shop';
+import Login from './pages/Website/auth/Login';
+import Register from './pages/Website/auth/Register';
 
 function App() {
   const route = useRoutes([
     {path:'',element:<Client/>,children:[
       {path:'',element:<Home/>},
-      {path:'shop',element:<Shop/>}
+      {path:'shop',element:<Shop/>},
+      {path:'login',element:<Login/>},
+      {path:'register',element:<Register/>}
   ]},
   {path:'admin',element: <LayoutAdmin/>,children:[
     {path:'list',element:<ListProduct/>},

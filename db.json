@@ -33,5 +33,17 @@
       "name": "Danh mục 1 update",
       "id": 1
     }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$z8FGpS66cvAQUJ8gza2t6OSrTm0rn25cbzpfHB7X2xOnD./Nlo3Pm",
+      "id": 1
+    },
+    {
+      "email": "khasdh@gmail.com",
+      "password": "$2a$10$CD66aR6Np0W0XV4qAEpV6.09P.3QyRamFKgegQfayyLSvCHeKKeqK",
+      "id": 2
+    }
   ]
 }

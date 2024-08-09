@@ -75,7 +75,7 @@ const AddProduct = () => {
               <div className="relative">
                 <textarea className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter Description"
-                  {...register("description")} name="" id="" cols="30" rows="10"></textarea>
+                  {...register("description")} name="" id="" ></textarea>
               </div>
             </div>
 
