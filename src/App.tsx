@@ -10,12 +10,13 @@ import EditProduct from './pages/Admin/pageAdmin/EditProduct';
 import ListCategory from './pages/Admin/categoryAdmin/ListCategory';
 import AddCategory from './pages/Admin/categoryAdmin/AddCategory';
 import EditCategory from './pages/Admin/categoryAdmin/EditCategory';
+import Shop from './pages/Website/Shop';
 
 function App() {
   const route = useRoutes([
     {path:'',element:<Client/>,children:[
       {path:'',element:<Home/>},
-      // {path:'detail',element:<Detail/>}
+      {path:'shop',element:<Shop/>}
   ]},
   {path:'admin',element: <LayoutAdmin/>,children:[
     {path:'list',element:<ListProduct/>},
