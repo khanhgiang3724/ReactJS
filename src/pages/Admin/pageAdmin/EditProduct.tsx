@@ -4,8 +4,10 @@ import { Product } from '../../../interfaces/product';
 import { useParams } from 'react-router-dom';
 import { getIdProduct } from '../../../services/product';
 import { ProductCT } from '../../../contexs/ProductContex';
+import { CategoryCT } from '../../../contexs/CategoryContex';
 
 const EditProduct = () => {
+  const {categorys} = useContext(CategoryCT)
   const {
     register,
     handleSubmit,
@@ -79,7 +81,7 @@ const EditProduct = () => {
               <div className="relative">
                 <textarea className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter Description"
-                  {...register("description")} name="" id="" cols="30" rows="10"></textarea>
+                  {...register("description")} name="" id=""></textarea>
               </div>
             </div>
             
@@ -96,17 +98,26 @@ const EditProduct = () => {
           </div>
 
           <div>
-            <label htmlFor="category">Category</label>
+              <label htmlFor="category">Category</label>
+              <div className="relative">
+                <select
+                  {...register('category')}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded"
+                >
+                  <option value="" disabled className="text-gray-500">
+                    Danh mục
+                  </option>
+                  {categorys.map((category) => (
+                    <option key={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.category && <span className="text-red-500">Vui lòng chọn danh mục</span>}
 
-            <div className="relative">
-              <input id='thumbnail'
-                type="text"
-                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                placeholder="Enter category"
-                {...register("category")}
-              />
+              </div>
             </div>
-          </div>
 
           <button
             type="submit"

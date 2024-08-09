@@ -2,9 +2,11 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import { Product } from '../../../interfaces/product';
 import { ProductCT } from '../../../contexs/ProductContex';
+import { CategoryCT } from '../../../contexs/CategoryContex';
 
 const AddProduct = () => {
     const {onAdd} = useContext(ProductCT)
+    const {categorys} = useContext(CategoryCT)
     const {
         register,
         handleSubmit,
@@ -92,14 +94,14 @@ const AddProduct = () => {
 
             <div>
               <label htmlFor="category">Category</label>
-
               <div className="relative">
-                <input id='thumbnail'
-                  type="text"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="Enter about"
-                  {...register("category")}
-                />
+                <select className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" {...register("category")} id="category">
+                  <option value="">Select category</option>
+                  {categorys.map(item => (
+                    <option key={item.id} value={item.name}>{item.name}</option>
+                  ))}
+                </select>
+                {errors.category && <span className="text-red-500">Vui lòng chọn danh mục</span>}
               </div>
             </div>
 
