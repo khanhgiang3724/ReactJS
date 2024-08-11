@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './App.css'
 import { useRoutes } from 'react-router-dom';
 import Client from './pages/Website/Client';
@@ -13,12 +13,14 @@ import EditCategory from './pages/Admin/categoryAdmin/EditCategory';
 import Shop from './pages/Website/Shop';
 import Login from './pages/Website/auth/Login';
 import Register from './pages/Website/auth/Register';
+import ProductDetail from './pages/Website/ProductDetail';
 
 function App() {
   const route = useRoutes([
     {path:'',element:<Client/>,children:[
       {path:'',element:<Home/>},
       {path:'shop',element:<Shop/>},
+      {path:'detail/:id',element:<ProductDetail/>},
       {path:'login',element:<Login/>},
       {path:'register',element:<Register/>}
   ]},
