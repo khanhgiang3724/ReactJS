@@ -1,6 +1,14 @@
-import React from 'react';
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
+  const {register,handleSubmit} = useForm()
+  const navigate = useNavigate()
+  const onSubmit = (data: any) => {
+    const { searchKeywords } = data; 
+    navigate(`/search?keyword=${searchKeywords}`);
+}
   return (
     <div>
       <header>
@@ -27,8 +35,8 @@ const Header = () => {
 
             {/* <!-- form desktop --> */}
             <div className="hidden lg:block h-[48px]">
-              <form className="w-[456px] flex h-[48px] justify-between">
-                <input type="text" className="border rounded-full w-[400px] px-6" placeholder="Search" />
+              <form onSubmit={handleSubmit(onSubmit)} className="w-[456px] flex h-[48px] justify-between">
+                <input type="text" {...register('searchKeywords')} className="border rounded-full w-[400px] px-6" placeholder="Search" />
                 <button className="rounded-full bg-[#17af26] w-[48px]">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                     stroke="currentColor" className="size-6 text-white mx-auto">
@@ -71,7 +79,7 @@ const Header = () => {
 
         {/* <!-- form mobile --> */}
         <div className="w-full h-[58px] lg:hidden flex justify-center items-center my-1">
-          <form className="flex h-[36px] justify-center items-center gap-x-2 w-full px-4">
+          <form  className="flex h-[36px] justify-center items-center gap-x-2 w-full px-4">
             <input type="text" className="border rounded-full w-full px-5" placeholder="Search" />
             <button className="rounded-full bg-[#17af26] w-[36px]">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"

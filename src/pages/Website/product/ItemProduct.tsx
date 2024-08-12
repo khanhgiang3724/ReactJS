@@ -25,7 +25,7 @@ const ItemProduct = () => {
     </div>
     <div className="grid lg:py-16 lg:mt-[30px] lg:grid-cols-[276px_276px_276px_276px] mb:grid-cols-[159px_159px] border-t justify-between lg:gap-y-8 mb:gap-y-[29px] mb:pt-10">
         {products.map((item) => (
-            <div className="grid grid-cols-[100%] lg:auto-rows-[240px_auto] mb:auto-rows-[160px_auto] lg:gap-y-6 mb:gap-y-[27px] overflow-hidden h-full rounded-xl">
+            <div key={item.id} className="grid grid-cols-[100%] lg:auto-rows-[240px_auto] mb:auto-rows-[160px_auto] lg:gap-y-6 mb:gap-y-[27px] overflow-hidden h-full rounded-xl">
         
             <div className="relative group w-full lg:h-[240px] mb:h-[160px] bg-[#F4F4F4] rounded-xl grid place-items-center">
               <img className="lg:w-[164px] mb:w-[120px] lg:h-[164px] mb:h-[120px]" src={item.thumbnail} alt=""/>
