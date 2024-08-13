@@ -16,6 +16,7 @@ import Register from './pages/Website/auth/Register';
 import ProductDetail from './pages/Website/ProductDetail';
 import CategoryId from './pages/Website/CategoryId';
 import Search from './pages/Website/Search';
+import Cart from './pages/Website/Cart';
 
 function App() {
   const route = useRoutes([
@@ -25,6 +26,7 @@ function App() {
       {path:'detail/:id',element:<ProductDetail/>},
       {path:'category/:id',element:<CategoryId/>},
       {path:'search',element:<Search/>},
+      {path:'cart',element:<Cart/>},
       {path:'login',element:<Login/>},
       {path:'register',element:<Register/>}
   ]},

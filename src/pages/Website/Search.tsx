@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom';
-import { Product } from '../../interfaces/product';
-import api from '../../apis';
+import { useEffect, useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
+import { Product } from "../../interfaces/product"
+import api from "../../apis"
 
 const Search = () => {
-    const [search] = useSearchParams()
-    const [products, setProducts] = useState<Product[]>([])
-    const [keywords, setKeywords] = useState<string>('')
-    const [error, setError] = useState<string | null>(null)
+  const [search] = useSearchParams()
+  const [products, setProducts] = useState<Product[]>([])
+  const [keywords, setKeywords] = useState<string>("")
+  const [error, setError] = useState<string | null>(null)
 
-    useEffect(() => {
-      (async () => {
-          try {
-              const keyword = search.get('keyword') || ''
-              const { data } = await api.get(`products?name_like=${keyword}`);
-              setProducts(data);
-              setKeywords(keyword);
-              setError(null);
-          } catch (err) {
-              setError('Không thể lấy dữ liệu sản phẩm');
-              console.error(err);
-          }
-      })();
-  }, [search]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const keyword = search.get("keyword") || ""
+        const { data } = await api.get(`products?name_like=${keyword}`)
+        setProducts(data)
+        setKeywords(keyword)
+        setError(null)
+      } catch (err) {
+        setError("Không thể lấy dữ liệu sản phẩm")
+        console.error(err)
+      }
+    })()
+  }, [search])
   return (
     <div className="w-full lg:pb-64 lg:pt-9 py-4 border pb-[199px]">
       <div className="lg:container lg:mx-auto lg:w-[1315px] mb:w-full grid lg:grid-cols-[304px_1fr] mb:grid-cols-1 gap-6">
@@ -80,7 +80,9 @@ const Search = () => {
         {/* <!-- product --> */}
         <div className="w-full flex flex-col mb:items-center lg:items-start">
           <div className="w-full flex justify-between items-center border-b pb-6">
-            <strong className="lg:text-2xl text-base font-normal">Kết quả liên quan đến "{keywords}"</strong>
+            <strong className="lg:text-2xl text-base font-normal">
+              Kết quả liên quan đến "{keywords}"
+            </strong>
             {error && <p className="error">{error}</p>}
             <div className="flex gap-x-[10px]">
               <div className="relative lg:hidden group w-[78px] flex items-center gap-x-2 h-[34px] border rounded-[100px] px-3 cursor-pointer border-gray-300 text-gray-700 text-xs tracking-[-0.5px]">
@@ -121,7 +123,10 @@ const Search = () => {
           {/* <!-- products --> */}
           <div className="w-full grid mt-8 lg:gap-y-8 gap-y-[29px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-center">
             {products.map((item) => (
-              <div key={item.id} className="grid grid-cols-1 snap-center auto-rows-[240px_auto] gap-y-4 overflow-hidden h-full rounded-xl">
+              <div
+                key={item.id}
+                className="grid grid-cols-1 snap-center auto-rows-[240px_auto] gap-y-4 overflow-hidden h-full rounded-xl"
+              >
                 {/* <!-- img --> */}
                 <div className="relative group w-full h-[240px] bg-[#f4f4f4] rounded-xl grid place-items-center">
                   <Link to={`/detail/${item.id}`}>

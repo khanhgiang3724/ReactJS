@@ -1,54 +1,53 @@
-import { useContext, useEffect, useState } from "react";
-import { CategoryCT } from "../../contexs/CategoryContex";
-import api from "../../apis";
-import { Product } from "../../interfaces/product";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { CategoryCT } from "../../contexs/CategoryContex"
+import api from "../../apis"
+import { Product } from "../../interfaces/product"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 const Shop = () => {
-  // const { products } = useContext(ProductCT)
-  const { categorys } = useContext(CategoryCT);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const { id } = useParams<{ id: string }>();
-  const [products, setProducts] = useState<Product[]>([]);
+  const { categorys } = useContext(CategoryCT)
+  const [selectedCategory, setSelectedCategory] = useState<string>("")
+  const { id } = useParams<{ id: string }>()
+  const [products, setProducts] = useState<Product[]>([])
   const navigate = useNavigate()
   useEffect(() => {
     (async () => {
       if (id) {
-        const { data } = await api.get(`products?category=${id}`);
-        setProducts(data);
+        const { data } = await api.get(`products?category=${id}`)
+        setProducts(data)
       } else {
-        const { data } = await api.get("products");
-        setProducts(data);
+        const { data } = await api.get("products")
+        setProducts(data)
       }
-    })();
-  }, [id]);
+    })()
+  }, [id])
 
   useEffect(() => {
     if (id) {
-      const selected = categorys.find((category) => category.id === id);
+      const selected = categorys.find((category) => category.id === id)
       if (selected) {
-        setSelectedCategory(selected.name);
+        setSelectedCategory(selected.name)
       }
     } else {
-      setSelectedCategory("");
+      setSelectedCategory("")
     }
-  }, [id, categorys]);
+  }, [id, categorys])
 
   const filteredProducts = products.filter(
     (product: Product) =>
       selectedCategory === "" || product.category === selectedCategory
-  );
+  )
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = categorys.find((cat) => cat.name === e.target.value);
+    const selected = categorys.find((cat) => cat.name === e.target.value)
     if (selected) {
-      setSelectedCategory(selected.name);
-      navigate(`/category/${selected.id}`);
+      setSelectedCategory(selected.name)
+      navigate(`/category/${selected.id}`)
     } else {
-      setSelectedCategory("");
-      navigate("/category");
+      setSelectedCategory("")
+      navigate("/category")
     }
-  };
+  }
 
   return (
     <div className="w-full lg:pb-64 lg:pt-9 py-4 border pb-[199px]">
@@ -265,7 +264,7 @@ const Shop = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Shop;
+export default Shop

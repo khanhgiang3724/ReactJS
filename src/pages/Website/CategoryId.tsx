@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Product } from '../../interfaces/product';
-import { Category } from '../../interfaces/category';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import api from '../../apis';
+import { Product } from '../../interfaces/product'
+import { Category } from '../../interfaces/category'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import api from '../../apis'
 
 const CategoryId = () => {
-    const [categorys, setCategorys] = useState<Category[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>("");
-    const [products, setProducts] = useState<Product[]>([]);
-    const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
+    const [categorys, setCategorys] = useState<Category[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<string>("")
+    const [products, setProducts] = useState<Product[]>([])
+    const { id } = useParams<{ id: string }>()
+    const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -17,41 +17,41 @@ const CategoryId = () => {
                 const [categoryResponse, productResponse] = await Promise.all([
                     api.get('categorys'),
                     api.get('products') // Assumes 'products' is the correct endpoint
-                ]);
-                setCategorys(categoryResponse.data);
-                setProducts(productResponse.data);
+                ])
+                setCategorys(categoryResponse.data)
+                setProducts(productResponse.data)
             } catch (error) {
-                console.error('Error fetching categories or products:', error);
+                console.error('Error fetching categories or products:', error)
             }
-        })();
-    }, []);
+        })()
+    }, [])
 
     useEffect(() => {
         if (id) {
-            const selected = categorys.find((category) => category.id === id);
+            const selected = categorys.find((category) => category.id === id)
             if (selected) {
-                setSelectedCategory(selected.name);
+                setSelectedCategory(selected.name)
             }
         } else {
-            setSelectedCategory("");
+            setSelectedCategory("")
         }
-    }, [id, categorys]);
+    }, [id, categorys])
 
     const filteredProducts = products.filter(
         (product: Product) =>
             (selectedCategory === "" || product.category === selectedCategory)
-    );
+    )
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selected = categorys.find((cat) => cat.name === e.target.value);
+        const selected = categorys.find((cat) => cat.name === e.target.value)
         if (selected) {
-            setSelectedCategory(selected.name);
-            navigate(`/category/${selected.id}`);
+            setSelectedCategory(selected.name)
+            navigate(`/category/${selected.id}`)
         } else {
-            setSelectedCategory("");
-            navigate("/shop");
+            setSelectedCategory("")
+            navigate("/shop")
         }
-    };
+    }
   return (
     <div className="w-full lg:pb-64 lg:pt-9 py-4 border pb-[199px]">
     <div className="lg:container lg:mx-auto lg:w-[1315px] mb:w-full grid lg:grid-cols-[304px_1fr] mb:grid-cols-1 gap-6">

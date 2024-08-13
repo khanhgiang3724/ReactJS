@@ -1,18 +1,76 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Product } from "../../interfaces/product";
-import { getIdProduct } from "../../services/product";
+import { useContext, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { Product } from "../../interfaces/product"
+import { getIdProduct } from "../../services/product"
+import { CartContextCT } from "../../contexs/CartContex"
+import { CartItem } from "../../interfaces/cart"
+import api from "../../apis"
 
 const ProductDetail = () => {
-  const [activeSection, setActiveSection] = useState("description");
-  const { id } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [activeSection, setActiveSection] = useState("description")
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const [product, setProduct] = useState<Product | null>(null)
   useEffect(() => {
     (async () => {
-      const data = await getIdProduct(`${id}`);
-      setProduct(data);
-    })();
-  }, []);
+      const data = await getIdProduct(`${id}`)
+      setProduct(data)
+    })()
+  }, [])
+
+  const [quantity, setQuantity] = useState(1)
+  const handleDecrement = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1)
+    }
+  }
+  const handleIncrement = () => {
+    setQuantity(quantity + 1)
+  }
+  const totalPrice = product ? (product.price * quantity).toFixed(2) : ""
+
+  const { addCartItem, increaseQty } = useContext(CartContextCT)
+  const handleAddToCart = async () => {
+    if (product) {
+      const cartItem: CartItem = {
+        ...product,
+        name: product.name,
+        quantity,
+        price: product.price,
+        thumbnail: product.thumbnail,
+      }
+
+      try {
+        // Fetch current cart items
+        const cartResponse = await api.get("carts")
+        const cartItems = cartResponse.data
+
+        // Check if the item already exists in the cart
+        const existingItem = cartItems.find(
+          (item: CartItem) => item.id === product.id
+        )
+
+        if (existingItem) {
+          // Update quantity of the existing item
+          await api.patch(`carts/${existingItem.id}`, {
+            quantity: existingItem.quantity + cartItem.quantity,
+          })
+          increaseQty(existingItem.id)
+        } else {
+          // Add new item to the cart
+          await api.post("carts", cartItem)
+          addCartItem(cartItem)
+        }
+
+        // Navigate to cart page
+        navigate("/cart")
+      } catch (error) {
+        console.log(error)
+        alert("An error occurred while adding to cart.")
+      }
+    }
+  }
+
   return (
     <div>
       {/* <!-- main --> */}
@@ -44,10 +102,11 @@ const ProductDetail = () => {
                   </svg>
                 </div>
               </div>
-              <div className="*:lg:w-16 *:lg:h-16 *:mb:w-14 *:mb:h-14 *:p-2 *:bg-[#fafafa] *:rounded-lg *:duration-300 *:cursor-pointer flex items-center gap-x-4">        
-                    {product?.images && product.images.map((item) => (
-                            <img src={item} alt="" className="hover:scale-110" />
-                    ))}
+              <div className="*:lg:w-16 *:lg:h-16 *:mb:w-14 *:mb:h-14 *:p-2 *:bg-[#fafafa] *:rounded-lg *:duration-300 *:cursor-pointer flex items-center gap-x-4">
+                {product?.images &&
+                  product.images.map((item) => (
+                    <img src={item} alt="" className="hover:scale-110" />
+                  ))}
               </div>
             </div>
           </div>
@@ -69,9 +128,6 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex lg:items-center mb:items-end justify-between">
                   <span className="font-medium text-[#EB2606] lg:text-xl lg:tracking-[0.7px] mb:text-base flex items-center lg:gap-x-3 lg:mt-0.5 mb:gap-x-2">
-                    <del className="font-light lg:text-sm mb:text-sm text-[#9D9EA2]">
-                      $200.00
-                    </del>
                     ${product?.price}
                   </span>
                   <section className="lg:w-[163px] mb:w-[157px] mb:mt-[8px] lg:mt-0 h-[21px] *:lg:text-sm *:mb:text-xs flex justify-between items-start">
@@ -116,15 +172,9 @@ const ProductDetail = () => {
                 <div className="flex flex-col gap-y-3.5 lg:pb-0 mb:pb-6 tracking-[-0.2px]">
                   <section className="flex justify-between *:font-medium *:text-sm">
                     <span className="flex gap-x-4 text-[#46494F]">
-                      Khalifa Kush (AAAA) <p className="text-[#9D9EA2]">2x</p>
+                      {product?.name}
                     </span>
-                    <strong>$120.00</strong>
-                  </section>
-                  <section className="flex justify-between *:font-medium *:text-sm">
-                    <span className="text-[#46494F]">
-                      Add Integra Pack - 4g
-                    </span>
-                    <strong>$2.00</strong>
+                    <strong>${product?.price}</strong>
                   </section>
                 </div>
                 {/* <!-- quantity --> */}
@@ -132,7 +182,7 @@ const ProductDetail = () => {
                   {/* <!-- up , dow quantity --> */}
                   <div className="border lg:py-2.5 lg:pr-6 lg:pl-4 mb:py-1 mb:pl-2 mb:pr-[18px] *:text-xs flex items-center gap-x-3 rounded-xl">
                     <div className="flex items-center *:w-9 *:h-9 gap-x-1 *:grid *:place-items-center">
-                      <button>
+                      <button onClick={handleDecrement}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -148,8 +198,8 @@ const ProductDetail = () => {
                           <path d="M5 12h14" />
                         </svg>
                       </button>
-                      <div className="bg-[#F4F4F4]">2</div>
-                      <button>
+                      <div className="bg-[#F4F4F4]">{quantity}</div>
+                      <button onClick={handleIncrement}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -169,8 +219,11 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   {/* <!-- add cart --> */}
-                  <button className="lg:text-base mb:text-sm font-medium flex place-items-center gap-x-4 text-white bg-[#17AF26] rounded-[100px] lg:px-[30px] mb:px-[22px] lg:h-14 mb:h-12">
-                    <span>Add to Cart</span> | <span>$242.00</span>
+                  <button
+                    onClick={handleAddToCart}
+                    className="lg:text-base mb:text-sm font-medium flex place-items-center gap-x-4 text-white bg-[#17AF26] rounded-[100px] lg:px-[30px] mb:px-[22px] lg:h-14 mb:h-12"
+                  >
+                    <span>Add to Cart</span> | <span>${totalPrice}</span>
                   </button>
                 </div>
               </div>
@@ -338,7 +391,7 @@ const ProductDetail = () => {
         </div>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default ProductDetail;
+export default ProductDetail
