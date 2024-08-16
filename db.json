@@ -68,7 +68,7 @@
       "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
       "category": "Danh mục 1",
       "id": 3,
-      "quantity": 3
+      "quantity": 1
     },
     {
       "id": 1,
@@ -87,17 +87,97 @@
         "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg"
       ],
       "about": "Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,...",
-      "quantity": 2
+      "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "fullName": "nguyễn văn a",
+      "email": "admin@gmail.com",
+      "address": "hà nội",
+      "city": "hà nooij",
+      "phone": "0986546966",
+      "zip": "122334",
+      "cardNumber": "1234563456",
+      "expiryDate": "2024-08-15",
+      "cvv": "123",
+      "items": [
+        {
+          "name": "101 bí kíp sống sót nơi công sở - Tái bản2",
+          "price": "3000",
+          "short_description": "Mo ta san pham 098765432",
+          "description": "",
+          "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+          "category": "Danh mục 1",
+          "id": 3,
+          "quantity": 1
+        },
+        {
+          "id": 1,
+          "name": "Đời Ngắn Đừng Ngủ Dài (Tái Bản) update",
+          "price": 750,
+          "sale": 300,
+          "description": "“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp, ngày qua ngày. Cuối cùng, một nhát cắt duy nhất sẽ phá vỡ tảng đá và lộ ra viên kim cương. Người tràn đầy nhiệt huyết và tận tâm với việc mình làm không bao giờ bị chối bỏ. Sự thật là thế.”Bằng những lời chia sẻ thật ngắn gọn, dễ hiểu về những trải nghiệm và suy ngẫm trong đời, Robin Sharma tiếp tục phong cách viết của ông từ cuốn sách Điều vĩ đại đời thường để mang đến cho độc giả những bài viết như lời tâm sự, vừa chân thành vừa sâu sắc.Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....",
+          "short_description": "“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,...",
+          "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+          "category": "Danh mục 1",
+          "rating": 4.8,
+          "images": [
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg"
+          ],
+          "about": "Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,...",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 3755,
+      "id": 1
     },
     {
-      "name": "Đời Ngắn Đừng Ngủ Dài (Tái Bản) update",
-      "price": "3000",
-      "short_description": "Mo ta san pham 098765432",
-      "description": "",
-      "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
-      "category": "Danh mục 2",
-      "id": 2,
-      "quantity": 2
+      "fullName": "nguyễn văn a",
+      "email": "admin@gmail.com",
+      "address": "hà nội",
+      "city": "hà nooij",
+      "phone": "0986546966",
+      "zip": "122334",
+      "cardNumber": "1234563456",
+      "expiryDate": "2024-08-14",
+      "cvv": "123",
+      "items": [
+        {
+          "name": "101 bí kíp sống sót nơi công sở - Tái bản2",
+          "price": "3000",
+          "short_description": "Mo ta san pham 098765432",
+          "description": "",
+          "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+          "category": "Danh mục 1",
+          "id": 3,
+          "quantity": 1
+        },
+        {
+          "id": 1,
+          "name": "Đời Ngắn Đừng Ngủ Dài (Tái Bản) update",
+          "price": 750,
+          "sale": 300,
+          "description": "“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp, ngày qua ngày. Cuối cùng, một nhát cắt duy nhất sẽ phá vỡ tảng đá và lộ ra viên kim cương. Người tràn đầy nhiệt huyết và tận tâm với việc mình làm không bao giờ bị chối bỏ. Sự thật là thế.”Bằng những lời chia sẻ thật ngắn gọn, dễ hiểu về những trải nghiệm và suy ngẫm trong đời, Robin Sharma tiếp tục phong cách viết của ông từ cuốn sách Điều vĩ đại đời thường để mang đến cho độc giả những bài viết như lời tâm sự, vừa chân thành vừa sâu sắc.Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng).....",
+          "short_description": "“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,...",
+          "thumbnail": "https://salt.tikicdn.com/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+          "category": "Danh mục 1",
+          "rating": 4.8,
+          "images": [
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg",
+            "https://salt.tikicdn.com/cache/w300/ts/product/57/44/86/19de0644beef19b9b885d0942f7d6f25.jpg"
+          ],
+          "about": "Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp,...",
+          "quantity": 1
+        }
+      ],
+      "totalAmount": 3755,
+      "id": 2
     }
   ]
 }

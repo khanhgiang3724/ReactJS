@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { CartContextCT } from "../contexs/CartContex";
 
 
 const Header = () => {
   const {register,handleSubmit} = useForm()
+  const {cartQty} = useContext(CartContextCT)
   const navigate = useNavigate()
   const onSubmit = (data: any) => {
     const { searchKeywords } = data; 
@@ -50,14 +53,14 @@ const Header = () => {
             <div className="flex gap-x-4 items-center">
               <span className="text-sm">Your Account</span>
               |
-              <button className="relative h-[24px]">
+              <Link to={`/cart`} className="relative h-[24px]">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                   stroke="currentColor" className="w-[24px]">
                   <path strokeLinecap="round" strokeLinejoin="round"
                     d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                 </svg>
-                <span className="absolute bg-red-500 top-0 right-0 rounded-full w-[16px] h-[16px] text-xs text-white flex items-center justify-center">1</span>
-              </button>
+                <span className="absolute bg-red-500 top-0 right-0 rounded-full w-[16px] h-[16px] text-xs text-white flex items-center justify-center">{cartQty}</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -65,15 +68,15 @@ const Header = () => {
         {/* <!-- menu --> */}
         <div className="w-full hidden lg:flex justify-center items-center">
           <div className="flex gap-x-6 h-[56px] items-center">
-            <a href="../src/products.html">Shop All</a>
-            <a href="../src/detail.html">Flower</a>
-            <a href="../src/cart.html">Edibles</a>
-            <a href="">Concentrates</a>
-            <a href="">Mushrooms</a>
-            <a href="">Promotions/Bundles</a>
-            <a href="">Support</a>
-            <a href="">Rewards</a>
-            <a href="">Blog</a>
+            <Link to={`/`}>Shop All</Link>
+            <Link to={`/shop`}>Shop</Link>
+            <Link to={``}>Edibles</Link>
+            <Link to={``}>Concentrates</Link>
+            <Link to={``}>Mushrooms</Link>
+            <Link to={``}>Promotions/Bundles</Link>
+            <Link to={``}>Support</Link>
+            <Link to={``}>Rewards</Link>
+            <Link to={``}>Blog</Link>
           </div>
         </div>
 

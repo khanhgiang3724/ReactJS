@@ -123,7 +123,7 @@ const CartContext = ({ children }: Props) => {
       }
     })()
   }
-  const clearCart = () => {
+  const clearCart =  () => {
     setCartItems([])
   }
 

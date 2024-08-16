@@ -200,9 +200,9 @@ const Cart = () => {
               Continue Shopping
             </Link>
 
-            <button className="bg-[#C8C9CB] px-10 h-14 rounded-[100px] text-white flex my-[13px] gap-x-4 place-items-center justify-center">
+            <Link to={`/checkout`} className="bg-[#C8C9CB] px-10 h-14 rounded-[100px] text-white flex my-[13px] gap-x-4 place-items-center justify-center">
               <span>Checkout</span>|<span>${totalPrice}</span>
-            </button>
+            </Link>
           </div>
         </div>
       </main>

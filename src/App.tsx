@@ -17,6 +17,7 @@ import ProductDetail from './pages/Website/ProductDetail';
 import CategoryId from './pages/Website/CategoryId';
 import Search from './pages/Website/Search';
 import Cart from './pages/Website/Cart';
+import CheckOut from './pages/Website/CheckOut';
 
 function App() {
   const route = useRoutes([
@@ -27,6 +28,7 @@ function App() {
       {path:'category/:id',element:<CategoryId/>},
       {path:'search',element:<Search/>},
       {path:'cart',element:<Cart/>},
+      {path:'checkout', element: <CheckOut />},
       {path:'login',element:<Login/>},
       {path:'register',element:<Register/>}
   ]},
